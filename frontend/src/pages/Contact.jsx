@@ -138,7 +138,7 @@ export default function Contact() {
                           value={form.phone}
                           onChange={handleChange}
                           className="input"
-                          placeholder="+234 800 000 0000"
+                          placeholder="+234 706 219 0613"
                         />
                       </div>
                       <div>
@@ -191,8 +191,8 @@ export default function Contact() {
 
                 <div className="space-y-5 mb-8">
                   {[
-                    { icon: Mail, label: 'Email', value: 'hello@taxontime.ng', href: 'mailto:hello@taxontime.ng' },
-                    { icon: Phone, label: 'Phone / WhatsApp', value: '+234 800 000 0000', href: 'tel:+2348000000000' },
+                    { icon: Mail, label: 'Email', value: 'zaratolabisi@gmail.com', href: 'mailto:zaratolabisi@gmail.com' },
+                    { icon: Phone, label: 'Phone / WhatsApp', value: '+234 706 219 0613', href: 'tel:+2347062190613' },
                     { icon: MapPin, label: 'Location', value: 'Nigeria', href: null },
                     { icon: Clock, label: 'Response Time', value: 'Within 24–48 hours', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (
@@ -258,3 +258,4 @@ export default function Contact() {
     </>
   );
 }
+

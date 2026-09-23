@@ -114,14 +114,14 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
                 <Mail size={15} className="text-brand-green mt-0.5 flex-shrink-0" />
-                <a href="mailto:hello@taxontime.ng" className="hover:text-brand-green transition-colors">
-                  hello@taxontime.ng
+                <a href="mailto:zaratolabisi@gmail.com" className="hover:text-brand-green transition-colors">
+                  zaratolabisi@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={15} className="text-brand-green mt-0.5 flex-shrink-0" />
-                <a href="tel:+2348000000000" className="hover:text-brand-green transition-colors">
-                  +234 800 000 0000
+                <a href="tel:+2347062190613" className="hover:text-brand-green transition-colors">
+                  +234 706 219 0613
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -147,3 +147,4 @@ export default function Footer() {
     </footer>
   );
 }
+
