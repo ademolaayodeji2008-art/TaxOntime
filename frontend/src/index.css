@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply font-sans bg-white text-gray-900 antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Brand button styles */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-6 py-3 rounded-lg
+           hover:bg-brand-green-dark transition-all duration-300 hover:scale-105 active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-white font-semibold px-6 py-3 rounded-lg
+           border-2 border-white hover:bg-white hover:text-black transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 bg-transparent text-brand-green font-semibold px-6 py-3 rounded-lg
+           border-2 border-brand-green hover:bg-brand-green hover:text-white transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Section container */
+  .container-site {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Green text accent */
+  .text-accent {
+    @apply text-brand-green;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent
+           transition-all duration-200 placeholder-gray-400;
+  }
+
+  /* Admin sidebar link */
+  .nav-link-admin {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300
+           hover:bg-white/10 hover:text-white transition-all duration-200 font-medium;
+  }
+
+  .nav-link-admin.active {
+    @apply bg-brand-green text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #16A34A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #166534;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #16A34A, #22C55E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero background pattern */
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(22, 163, 74, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.1) 0%, transparent 50%);
+}
+
+/* Prose override for blog content */
+.prose h2 { @apply text-2xl font-bold mt-8 mb-4; }
+.prose h3 { @apply text-xl font-bold mt-6 mb-3; }
+.prose p  { @apply mb-4 leading-relaxed; }
+.prose ul { @apply list-disc list-inside mb-4 space-y-1; }
+.prose ol { @apply list-decimal list-inside mb-4 space-y-1; }
+.prose a  { @apply text-brand-green underline hover:text-brand-green-dark; }
