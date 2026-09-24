@@ -12,18 +12,19 @@ const app = express();
 // ─── Security Middleware ───────────────────────────────────────────────────────
 app.use(helmet());
 
-// CORS — allows localhost in dev and the Vercel domain(s) in production
+// CORS — allows localhost in dev and all production domains
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
+  'https://taxontime.com.ng',
+  'https://www.taxontime.com.ng',
 ];
 
-// Accept one or more space-separated production origins from env
-// e.g. FRONTEND_URL=https://taxontime.vercel.app https://www.taxontime.ng
+// Also accept any additional origins from FRONTEND_URL env var (space-separated)
 if (process.env.FRONTEND_URL) {
   process.env.FRONTEND_URL.split(' ').forEach((url) => {
     const trimmed = url.trim();
-    if (trimmed) allowedOrigins.push(trimmed);
+    if (trimmed && !allowedOrigins.includes(trimmed)) allowedOrigins.push(trimmed);
   });
 }
 
