@@ -191,7 +191,7 @@ export default function Contact() {
 
                 <div className="space-y-5 mb-8">
                   {[
-                    { icon: Mail, label: 'Email', value: 'zaratolabisi@gmail.com', href: 'mailto:zaratolabisi@gmail.com' },
+                    { icon: Mail, label: 'Email', value: 'taxontime.com.ng@gmail.com', href: 'mailto:taxontime.com.ng@gmail.com' },
                     { icon: Phone, label: 'Phone / WhatsApp', value: '+234 706 219 0613', href: 'tel:+2347062190613' },
                     { icon: MapPin, label: 'Location', value: 'Nigeria', href: null },
                     { icon: Clock, label: 'Response Time', value: 'Within 24–48 hours', href: null },
@@ -257,4 +257,5 @@ export default function Contact() {
     </>
   );
 }
+
 
