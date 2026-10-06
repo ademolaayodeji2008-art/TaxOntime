@@ -368,16 +368,20 @@ export default function Services() {
                     Interested in Our Academy?
                   </h2>
                   <p className="text-gray-400 text-lg leading-relaxed mb-3">
-                    Take your tax knowledge to the next level. Our academy offers structured
-                    courses, workshops, and practical training for individuals who want to
-                    understand tax or build a career in the profession.
+                    TaxonTime Academy will serve three learning groups: individuals and business
+                    owners who want to understand tax and compliance, SMEs who need practical
+                    business and financial management education, and aspiring tax professionals
+                    who want structured professional learning.
+                  </p>
+                  <p className="text-brand-green font-medium mb-6 text-sm">
+                    🚀 Courses coming soon — School of Tax | School of Business | School of Financial Literacy
                   </p>
                   <ul className="space-y-2 mb-8 text-left inline-block">
                     {[
-                      { icon: BookMarked, text: 'Practical tax courses for beginners & professionals' },
-                      { icon: GraduationCap, text: 'Mentorship from a Chartered Tax Specialist' },
+                      { icon: BookMarked, text: 'Structured learning for beginners to professionals' },
+                      { icon: GraduationCap, text: 'Mentorship from a Chartered Tax Consultant' },
                       { icon: CheckCircle2, text: 'Certificates of completion' },
-                      { icon: Users, text: 'Community of tax-savvy entrepreneurs' },
+                      { icon: Users, text: 'Community of tax-savvy business owners' },
                     ].map(({ icon: Icon, text }) => (
                       <li key={text} className="flex items-center gap-3 text-gray-300 text-sm">
                         <Icon size={15} className="text-brand-green flex-shrink-0" />
@@ -394,7 +398,7 @@ export default function Services() {
                       className="btn-primary inline-flex items-center gap-2 animate-pulse-green"
                     >
                       <GraduationCap size={17} />
-                      Visit the Academy
+                      Join the Interest List
                       <ExternalLink size={14} />
                     </a>
                     <Link to="/contact?service=Kickstart Tax Career" className="btn-secondary inline-flex">

@@ -51,6 +51,7 @@ export default function Navbar() {
             />
             <span className="text-white font-heading font-bold text-lg hidden sm:block">
               TaxonTime<span className="text-brand-green">.Ng</span>
+              <span className="block text-xs text-gray-400 font-normal leading-none">Tax & Business Made Simple</span>
             </span>
           </Link>
 

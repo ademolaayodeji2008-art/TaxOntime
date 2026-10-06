@@ -6,7 +6,7 @@ import AnimatedSection from '../components/ui/AnimatedSection';
 import PageHero from '../components/ui/PageHero';
 import api from '../utils/api';
 
-const categories = ['All', 'Tax Tips', 'Business', 'Compliance', 'News', 'Guides', 'General'];
+const categories = ['All', 'Tax Made Simple', 'Business Made Simple', 'Tax & Business Updates', 'Money & Financial Literacy', 'Guides & Resources', 'General'];
 
 const CategoryPill = ({ label, active, onClick }) => (
   <button
@@ -130,9 +130,9 @@ export default function Blog() {
     <>
       <PageHero
         breadcrumb="Blog & Resources"
-        title="Tax Tips, Guides &"
-        highlight="Business Insights"
-        subtitle="Stay informed with practical tax advice, compliance updates, and business growth strategies from our experts."
+        title="Tax & Business Education"
+        highlight="Made Simple"
+        subtitle="Practical tax and business education made simple. Explore guides, updates and insights designed to help individuals and businesses understand their obligations and make better-informed decisions."
       />
 
       <section className="section bg-white">

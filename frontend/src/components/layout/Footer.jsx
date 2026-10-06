@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
 import NewsletterForm from '../ui/NewsletterForm';
 
 export default function Footer() {
@@ -12,10 +12,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center gap-6 justify-between">
             <div>
               <h3 className="text-white font-heading font-bold text-2xl">
-                Stay Tax-Smart. Subscribe.
+                Tax & Business Insights — Free.
               </h3>
               <p className="text-gray-400 mt-1">
-                Get free tax tips, compliance updates, and business guides straight to your inbox.
+                Get practical tax and business insights, important updates, compliance reminders and useful resources — straight to your inbox.
               </p>
             </div>
             <div className="w-full md:w-auto md:min-w-[400px]">
@@ -37,13 +37,13 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Helping individuals and SMEs create and preserve wealth through smart tax planning,
-              advisory, and full compliance with Nigerian tax laws.
+              TaxonTime.Ng simplifies tax and business information to help individuals and
+              businesses understand their obligations, make informed decisions and manage
+              their affairs better.
             </p>
             <div className="flex gap-3 mt-5">
               {[
                 { Icon: Instagram, href: 'https://instagram.com/taxontime.ng', label: 'Instagram' },
-                { Icon: Twitter, href: 'https://twitter.com/taxontimeng', label: 'Twitter' },
                 { Icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
                 { Icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
               ].map(({ Icon, href, label }) => (

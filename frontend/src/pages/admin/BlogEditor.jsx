@@ -4,7 +4,7 @@ import { ArrowLeft, Save, Eye } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../../utils/api';
 
-const categories = ['Tax Tips', 'Business', 'Compliance', 'News', 'Guides', 'General'];
+const categories = ['Tax Made Simple', 'Business Made Simple', 'Tax & Business Updates', 'Money & Financial Literacy', 'Guides & Resources', 'General'];
 
 export default function BlogEditor() {
   const { id } = useParams();

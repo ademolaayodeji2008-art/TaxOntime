@@ -28,7 +28,7 @@ const blogSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['Tax Tips', 'Business', 'Compliance', 'News', 'Guides', 'General'],
+      enum: ['Tax Made Simple', 'Business Made Simple', 'Tax & Business Updates', 'Money & Financial Literacy', 'Guides & Resources', 'General'],
       default: 'General',
     },
     tags: [{ type: String, trim: true }],

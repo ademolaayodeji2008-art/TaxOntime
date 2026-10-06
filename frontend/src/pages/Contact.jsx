@@ -221,7 +221,6 @@ export default function Contact() {
                   <div className="flex gap-3">
                     {[
                       { label: 'Instagram', href: 'https://instagram.com/taxontime.ng' },
-                      { label: 'Twitter', href: 'https://twitter.com/taxontimeng' },
                       { label: 'LinkedIn', href: 'https://linkedin.com' },
                     ].map(({ label, href }) => (
                       <a

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingBag, ExternalLink, Tag, Star, BookOpen, Layout, FileText, List } from 'lucide-react';
 import AnimatedSection from '../components/ui/AnimatedSection';
@@ -118,10 +119,10 @@ export default function Products() {
   return (
     <>
       <PageHero
-        breadcrumb="Products & Resources"
-        title="Tools to Keep You"
-        highlight="Tax-Smart"
-        subtitle="E-books, templates, organizers, and guides designed by a Chartered Tax Specialist to help you manage your tax and business affairs with ease."
+        breadcrumb="Resources & Products"
+        title="Practical Tools to Help You"
+        highlight="Understand & Manage"
+        subtitle="Guides, templates, planners and e-books designed by a Chartered Tax Consultant to help individuals and businesses understand tax and manage their affairs better."
       />
 
       <section className="section bg-white">
@@ -163,8 +164,14 @@ export default function Products() {
           ) : products.length === 0 ? (
             <div className="text-center py-24">
               <ShoppingBag size={48} className="text-gray-200 mx-auto mb-4" />
-              <h3 className="text-gray-400 font-medium text-lg">No products found</h3>
-              <p className="text-gray-300 text-sm mt-1">Check back soon — new resources are added regularly.</p>
+              <h3 className="text-gray-500 font-medium text-lg">Resources Coming Soon</h3>
+              <p className="text-gray-400 text-sm mt-2 max-w-sm mx-auto">
+                We are preparing practical guides, templates and resources for you.
+                Subscribe to our newsletter to be notified when they go live.
+              </p>
+              <Link to="/contact" className="btn-outline mt-6 inline-flex">
+                Get Notified
+              </Link>
             </div>
           ) : (
             <>

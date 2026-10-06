@@ -11,7 +11,7 @@ import ImageSection from '../components/ui/ImageSection';
 
 const stats = [
   { value: '100+', label: 'Clients Served', icon: Users },
-  { value: '10+', label: 'Years Experience', icon: Award },
+  { value: '7+', label: 'Years Experience', icon: Award },
   { value: '100%', label: 'Compliance Rate', icon: CheckCircle2 },
   { value: '₦0', label: 'Hidden Fees', icon: TrendingUp },
 ];
@@ -20,37 +20,37 @@ const services = [
   {
     icon: Phone,
     title: 'Consultation',
-    description: 'Expert advice on business structure, tax planning, and quick answers to your tax questions.',
+    description: 'Understand your tax and business situation with guidance from a qualified professional — before making decisions that could cost you.',
     href: '/services#consultation',
   },
   {
     icon: FileText,
-    title: 'Tax Filing',
-    description: 'Annual and monthly tax filing for individuals (PITA) and small businesses (CITA, VAT, PAYE).',
+    title: 'Tax Filing & Compliance',
+    description: 'Accurate, timely tax filing for individuals and businesses — personal income tax, company tax, VAT and PAYE handled properly.',
     href: '/services#tax-filing',
   },
   {
     icon: Building2,
     title: 'Business Formation',
-    description: 'Register your business, file CAC reports, reactivate or amend your business structure.',
+    description: 'Register your business correctly from the start. CAC registration, annual returns, reactivation and amendments done right.',
     href: '/services#business-formation',
   },
   {
     icon: Shield,
     title: 'Tax Audit & Investigation',
-    description: 'Professional handling of tax audits and investigations to minimize liabilities.',
+    description: 'Facing a tax audit or query? Get professional support to respond correctly and protect your interests.',
     href: '/services#tax-audit',
   },
   {
     icon: BookOpen,
     title: 'Tax Defence & Resolution',
-    description: 'Protect and resolve your tax issues with expert defence strategies.',
+    description: 'Dispute an incorrect tax assessment or resolve outstanding obligations with expert representation.',
     href: '/services#tax-defence',
   },
   {
     icon: ShoppingBag,
-    title: 'Products & Resources',
-    description: 'E-books, templates, organizers, guides, and checklists to keep you tax-smart.',
+    title: 'Resources & Products',
+    description: 'Practical guides, templates, planners and e-books to help you understand tax and manage your business better.',
     href: '/products',
   },
 ];
@@ -146,12 +146,12 @@ export default function Home() {
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="w-2 h-2 bg-brand-green rounded-full"
               />
-              Nigeria's Trusted Tax & Business Compliance Experts
+              Nigeria's Trusted Tax & Business Education Platform
             </motion.div>
 
             {/* Headline — words animate in one by one */}
             <div className="mb-6">
-              {['Pay Less Tax.', 'Stay Compliant.', 'Grow Your Business.'].map((line, i) => (
+              {['Tax & Business', 'Made Simple.'].map((line, i) => (
                 <motion.div
                   key={line}
                   initial={{ opacity: 0, y: 40 }}
@@ -159,7 +159,7 @@ export default function Home() {
                   transition={{ duration: 0.65, delay: 0.15 + i * 0.18, ease: 'easeOut' }}
                 >
                   <h1 className={`font-heading font-bold leading-tight
-                    text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                    text-5xl sm:text-6xl md:text-7xl lg:text-8xl
                     ${i === 1 ? 'gradient-text' : 'text-white'}`}
                   >
                     {line}
@@ -183,8 +183,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed mb-10 drop-shadow-md"
             >
-              Expert tax consulting, business formation, and compliance services for individuals
-              and SMEs in Nigeria — led by a Chartered Tax Specialist with 10+ years of experience.
+              Practical tax and business education, guidance and professional support to help
+              individuals, start-ups, entrepreneurs and SMEs understand their obligations,
+              make informed decisions and manage their affairs better.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -195,14 +196,14 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                <Link to="/contact" className="btn-primary text-base px-8 py-4 animate-pulse-green shadow-lg shadow-brand-green/30">
-                  Book a Free Consultation
+                <Link to="/blog" className="btn-primary text-base px-8 py-4 animate-pulse-green shadow-lg shadow-brand-green/30">
+                  Explore Tax & Business Resources
                   <ArrowRight size={18} />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                <Link to="/services" className="btn-secondary text-base px-8 py-4 backdrop-blur-sm">
-                  Explore Services
+                <Link to="/contact" className="btn-secondary text-base px-8 py-4 backdrop-blur-sm">
+                  Get Professional Help
                   <ChevronRight size={18} />
                 </Link>
               </motion.div>
@@ -375,10 +376,10 @@ export default function Home() {
         <div className="container-site text-center">
           <AnimatedSection variant="scaleUp">
             <h2 className="text-white font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-4 drop-shadow-lg">
-              Ready to Take Control of Your Taxes?
+              Ready to Understand Your Taxes and Grow Your Business?
             </h2>
             <p className="text-gray-200 text-lg max-w-xl mx-auto mb-10 drop-shadow">
-              Book a consultation today and let's create a tax strategy that works for you.
+              Book a consultation today or explore our resources — practical support is one step away.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
@@ -401,12 +402,12 @@ export default function Home() {
         <div className="container-site">
           <div className="max-w-xl mx-auto text-center">
             <AnimatedSection>
-              <p className="text-brand-green font-medium uppercase tracking-widest text-sm mb-2">Stay Informed</p>
+              <p className="text-brand-green font-medium uppercase tracking-widest text-sm mb-2">TaxonTime Brief</p>
               <h2 className="font-heading font-bold text-3xl text-gray-900 mb-3">
-                Free Tax Tips in Your Inbox
+                Tax & Business Insights Straight to Your Inbox
               </h2>
               <p className="text-gray-500 mb-8">
-                Join hundreds of business owners and individuals getting weekly tax insights, compliance alerts, and money-saving tips.
+                Get practical tax and business insights, important updates, compliance reminders and useful resources — straight to your inbox.
               </p>
               <NewsletterForm />
             </AnimatedSection>

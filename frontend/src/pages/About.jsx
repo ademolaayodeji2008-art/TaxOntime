@@ -77,9 +77,9 @@ export default function About() {
     <>
       <PageHero
         breadcrumb="About Us"
-        title="Meet the Team Behind"
-        highlight="TaxonTime.Ng"
-        subtitle="A dedicated team of tax professionals committed to helping you create and preserve wealth through smart tax planning and full compliance."
+        title="Making Tax & Business"
+        highlight="Easier to Understand"
+        subtitle="TaxonTime.Ng combines practical education with professional guidance to help individuals and businesses understand their obligations, make informed decisions and stay compliant."
       />
 
       {/* ── Welcome & Founder ───────────────────────────────────── */}
@@ -125,7 +125,7 @@ export default function About() {
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-px bg-white/5 border-t border-white/10">
                     {[
-                      { v: '10+', l: 'Years of Experience' },
+                      { v: '7+', l: 'Years of Experience' },
                       { v: '100+', l: 'Clients Served' },
                       { v: 'ICAN', l: 'Chartered Accountant' },
                       { v: 'CITN', l: 'Tax Specialist' },
@@ -146,33 +146,28 @@ export default function About() {
                 Welcome to TaxonTime.Ng
               </p>
               <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-5">
-                Your Trusted Partner in Tax & Business Compliance
+                Making Tax & Business Easier to Understand
               </h2>
 
               <p className="text-gray-600 leading-relaxed mb-4">
-                We are a dedicated team of tax consultants led by <strong>Zarat Ranti L.</strong>,
-                a seasoned Tax Consultant with up to a decade of experience in Tax Planning,
-                Tax Advisory, and Management.
+                TaxonTime.Ng is an education-led tax and business platform created to simplify
+                information that individuals and businesses often find confusing. We combine
+                <strong> practical education with professional guidance</strong> to help people
+                understand their responsibilities, make informed decisions and stay compliant.
               </p>
 
               <p className="text-gray-600 leading-relaxed mb-4">
-                Our mission is to help individuals and small to medium-sized enterprises (SMEs)
-                <strong> create and preserve wealth</strong> by minimizing their tax liabilities while
-                ensuring full compliance with all relevant tax laws and regulations.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed mb-4">
-                With a robust background in Accounting and credentials as a <strong>Chartered
-                Accountant</strong> and <strong>Chartered Taxation Specialist</strong>, Zarat Ranti L.
-                has successfully guided more than 100 clients — both businesses and individuals —
-                in optimizing their tax strategies.
+                Led by <strong>Zarat Ranti L.</strong>, a Chartered Tax Consultant with
+                <strong> 7+ years of experience</strong> in Tax Planning, Tax Advisory and
+                Management, we have guided more than <strong>100 clients</strong> — individuals
+                and businesses — in understanding their obligations and optimising their
+                tax positions.
               </p>
 
               <p className="text-gray-600 leading-relaxed mb-6">
-                Whether you are an individual seeking to optimize your personal taxes or a business
-                looking to streamline your Tax and Business Compliance processes, TaxonTime.Ng is
-                here to help. We look forward to working with you and helping you navigate the
-                complexities of Business and Tax management with <strong>ease and confidence</strong>.
+                Whether you are an individual, a start-up, an entrepreneur or an SME, TaxonTime.Ng
+                gives you the knowledge, tools and professional support you need to manage your
+                tax and business affairs with <strong>clarity and confidence</strong>.
               </p>
 
               <Link to="/contact" className="btn-primary">
@@ -233,10 +228,10 @@ export default function About() {
               We Are <span className="gradient-text">Taxpreneurs</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed drop-shadow">
-              We believe in the principles of <strong className="text-white">equity and fairness</strong>, and
-              our approach is driven by these values. At TaxonTime.Ng, we are passionate about being
-              "Taxpreneurs" — entrepreneurs in the field of tax who are committed to ethical practices
-              and fairness.
+              We believe in the principles of <strong className="text-white">equity and fairness</strong>.
+              The "Taxpreneurs" concept reflects our mission — entrepreneurs in tax committed to
+              education, ethical practice and voluntary compliance. Our goal is to make tax and
+              business information accessible, understandable and actionable for every Nigerian.
             </p>
           </AnimatedSection>
 
@@ -269,8 +264,9 @@ export default function About() {
                 Choosing TaxonTime.Ng Means Partnering With a Firm That Values Your Success
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                We are committed to delivering tax and business compliance solutions that are accurate,
-                ethical, and tailored to your specific situation. Here is what sets us apart:
+                Our mission is to simplify tax and business information, helping individuals
+                and businesses understand their responsibilities, make informed decisions and
+                manage their financial and business affairs better.
               </p>
               <ul className="space-y-4">
                 {[
