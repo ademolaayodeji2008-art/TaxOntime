@@ -71,7 +71,7 @@ export default function Footer() {
                 { to: '/services#business-formation', label: 'Business Formation' },
                 { to: '/services#tax-audit', label: 'Tax Audit & Investigation' },
                 { to: '/services#tax-defence', label: 'Tax Defence & Resolution' },
-                { to: '/services#kickstart', label: 'Kickstart Tax Career' },
+                { to: '/services#academy', label: 'TaxonTime Academy' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link

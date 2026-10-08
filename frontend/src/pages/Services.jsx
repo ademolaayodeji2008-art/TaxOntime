@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Phone, FileText, Building2, Shield, Rocket, ArrowRight,
+  Phone, FileText, Building2, Shield, ArrowRight,
   CheckCircle2, Users, Star, UserCircle, Briefcase,
   MessageCircleQuestion, RefreshCw, FilePen, FileSearch,
   ClipboardList, Scale, Handshake, GraduationCap,
@@ -199,28 +199,6 @@ const serviceGroups = [
       },
     ],
   },
-  {
-    id: 'kickstart',
-    icon: Rocket,
-    title: 'Kickstart Your Tax Profession',
-    color: 'from-pink-500 to-pink-700',
-    description:
-      'Interested in a career in tax? We offer resources, guidance, and mentorship to help you start and thrive in the tax profession.',
-    items: [
-      {
-        icon: GraduationCap,
-        title: 'Career Guidance & Mentorship',
-        description:
-          'Get guided by an experienced Chartered Tax Specialist on how to build a successful career in taxation and accounting.',
-      },
-      {
-        icon: BookMarked,
-        title: 'Resources & Training',
-        description:
-          'Access curated resources, study guides, and practical knowledge to fast-track your journey into the tax profession.',
-      },
-    ],
-  },
 ];
 
 // ─── Academy link — update href when ready ────────────────────────────────────
@@ -266,7 +244,7 @@ export default function Services() {
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-brand-green hover:bg-brand-green/5 transition-all whitespace-nowrap border border-brand-green/30"
             >
               <GraduationCap size={13} />
-              Our Academy
+              TaxonTime Academy
             </a>
           </div>
         </div>

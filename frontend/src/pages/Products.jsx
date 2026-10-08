@@ -122,7 +122,7 @@ export default function Products() {
         breadcrumb="Resources & Products"
         title="Practical Tools to Help You"
         highlight="Understand & Manage"
-        subtitle="Guides, templates, planners and e-books designed by a Chartered Tax Consultant to help individuals and businesses understand tax and manage their affairs better."
+        subtitle="Guides, templates, planners and e-books designed by TaxonTime.Ng to help individuals and businesses understand tax and manage their affairs better."
       />
 
       <section className="section bg-white">
@@ -215,7 +215,7 @@ export default function Products() {
           <AnimatedSection>
             <p className="text-gray-500 text-sm max-w-md mx-auto">
               All products are hosted on <strong className="text-gray-700">Selar</strong> — Nigeria's
-              trusted digital product marketplace. Clicking "Buy Now" takes you directly to a secure checkout.
+              trusted digital product marketplace. Clicking "Buy Now" or "Get Free" takes you directly to a secure checkout.
             </p>
           </AnimatedSection>
         </div>

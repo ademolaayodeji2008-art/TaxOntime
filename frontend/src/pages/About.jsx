@@ -270,11 +270,11 @@ export default function About() {
               </p>
               <ul className="space-y-4">
                 {[
-                  { title: 'Client-Centric Service', desc: 'Tailoring our services to meet your unique needs — no cookie-cutter approach.' },
-                  { title: 'Transparency', desc: 'Keeping you informed and involved every step of the way — no surprises.' },
-                  { title: 'Reliability', desc: 'Delivering accurate, timely, and reliable tax solutions you can always count on.' },
-                  { title: 'Professionalism', desc: 'Chartered qualifications and a proven track record of success across 100+ clients.' },
-                  { title: 'Integrity', desc: 'Commitment to ethical practices and fair treatment for every single client.' },
+                  { title: 'Education-first approach', desc: 'We explain the "why" behind every obligation so you understand, not just comply.' },
+                  { title: 'Qualified & experienced', desc: 'Chartered Accountant and Tax Consultant with 7+ years guiding 100+ clients.' },
+                  { title: 'Individuals & businesses', desc: 'From personal income tax to company filings — we cover every stage of your journey.' },
+                  { title: 'Practical resources', desc: 'Guides, templates and tools you can actually use to manage your affairs better.' },
+                  { title: 'Ongoing support', desc: 'We stay with you through updates, changes and new obligations — not just at filing time.' },
                 ].map(({ title, desc }) => (
                   <li key={title} className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-brand-green/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
