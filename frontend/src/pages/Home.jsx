@@ -11,7 +11,7 @@ import ImageSection from '../components/ui/ImageSection';
 
 const stats = [
   { value: '100+', label: 'Clients Served', icon: Users },
-  { value: '7+', label: 'Years Experience', icon: Award },
+  { value: '10+', label: 'Years Experience', icon: Award },
   { value: '100%', label: 'Compliance Rate', icon: CheckCircle2 },
   { value: '₦0', label: 'Hidden Fees', icon: TrendingUp },
 ];
@@ -417,3 +417,4 @@ export default function Home() {
     </>
   );
 }
+

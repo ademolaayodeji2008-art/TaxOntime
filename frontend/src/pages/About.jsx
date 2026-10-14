@@ -125,7 +125,7 @@ export default function About() {
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-px bg-white/5 border-t border-white/10">
                     {[
-                      { v: '7+', l: 'Years of Experience' },
+                      { v: '10+', l: 'Years of Experience' },
                       { v: '100+', l: 'Clients Served' },
                       { v: 'ICAN', l: 'Chartered Accountant' },
                       { v: 'CITN', l: 'Tax Specialist' },
@@ -158,7 +158,7 @@ export default function About() {
 
               <p className="text-gray-600 leading-relaxed mb-4">
                 Led by <strong>Zarat Ranti L.</strong>, a Chartered Tax Consultant with
-                <strong> 7+ years of experience</strong> in Tax Planning, Tax Advisory and
+                <strong> 10+ years of experience</strong> in Tax Planning, Tax Advisory and
                 Management, we have guided more than <strong>100 clients</strong> — individuals
                 and businesses — in understanding their obligations and optimising their
                 tax positions.
@@ -271,7 +271,7 @@ export default function About() {
               <ul className="space-y-4">
                 {[
                   { title: 'Education-first approach', desc: 'We explain the "why" behind every obligation so you understand, not just comply.' },
-                  { title: 'Qualified & experienced', desc: 'Chartered Accountant and Tax Consultant with 7+ years guiding 100+ clients.' },
+                  { title: 'Qualified & experienced', desc: 'Chartered Accountant and Tax Consultant with 10+ years guiding 100+ clients.' },
                   { title: 'Individuals & businesses', desc: 'From personal income tax to company filings — we cover every stage of your journey.' },
                   { title: 'Practical resources', desc: 'Guides, templates and tools you can actually use to manage your affairs better.' },
                   { title: 'Ongoing support', desc: 'We stay with you through updates, changes and new obligations — not just at filing time.' },
@@ -354,3 +354,4 @@ export default function About() {
     </>
   );
 }
+
