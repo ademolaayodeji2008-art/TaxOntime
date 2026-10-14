@@ -304,9 +304,10 @@ export default function Home() {
                 <div className="bg-black rounded-2xl p-10 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/20 rounded-full blur-3xl" />
                   <img
-                    src="/tnt.png"
-                    alt="TaxonTime.Ng"
-                    className="w-28 h-28 rounded-xl object-contain mx-auto mb-6 animate-float"
+                    src="/owner2.jpeg"
+                    alt="Zarat Ranti L. — Lead Tax Consultant & Founder"
+                    className="w-full h-48 object-cover object-top rounded-xl mx-auto mb-6"
+                    style={{ objectPosition: '50% 15%' }}
                   />
                   <h3 className="text-white font-heading font-bold text-2xl text-center mb-2">
                     Zarat Ranti L.
