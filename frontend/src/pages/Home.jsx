@@ -301,29 +301,40 @@ export default function Home() {
             <AnimatedSection variant="fadeLeft">
               <div className="relative">
                 <div className="absolute -inset-4 bg-brand-green/10 rounded-3xl -z-10" />
-                <div className="bg-black rounded-2xl p-10 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/20 rounded-full blur-3xl" />
-                  <img
-                    src="/owner2.jpeg"
-                    alt="Zarat Ranti L. — Lead Tax Consultant & Founder"
-                    className="w-full h-48 object-cover object-top rounded-xl mx-auto mb-6"
-                    style={{ objectPosition: '50% 15%' }}
-                  />
-                  <h3 className="text-white font-heading font-bold text-2xl text-center mb-2">
-                    Zarat Ranti L.
-                  </h3>
-                  <p className="text-brand-green text-center text-sm font-medium mb-6">
-                    Chartered Accountant & Tax Consultant
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
+                {/* Card — no padding, photo fills top */}
+                <div className="bg-black rounded-2xl overflow-hidden">
+
+                  {/* Full portrait photo */}
+                  <div className="relative w-full" style={{ height: '420px' }}>
+                    <img
+                      src="/owner2.jpeg"
+                      alt="Zarat Ranti L. — Lead Tax Consultant & Founder"
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: '50% 10%' }}
+                    />
+                    {/* Gradient overlay at bottom for name readability */}
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                    {/* Name on photo */}
+                    <div className="absolute bottom-0 left-0 right-0 px-6 pb-5">
+                      <h3 className="text-white font-heading font-bold text-2xl mb-0.5">
+                        Zarat Ranti L.
+                      </h3>
+                      <p className="text-brand-green text-sm font-medium">
+                        Chartered Accountant & Tax Consultant
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Stats below photo */}
+                  <div className="grid grid-cols-2 gap-px bg-white/5 border-t border-white/10">
                     {[
                       { v: '10+', l: 'Years Experience' },
                       { v: '100+', l: 'Happy Clients' },
                       { v: 'ICAN', l: 'Certified' },
                       { v: 'CITN', l: 'Member' },
                     ].map(({ v, l }) => (
-                      <div key={l} className="bg-white/5 rounded-xl p-3 text-center">
-                        <div className="text-brand-green font-bold text-xl">{v}</div>
+                      <div key={l} className="bg-black/80 p-4 text-center hover:bg-brand-green/10 transition-colors">
+                        <div className="text-brand-green font-bold text-2xl">{v}</div>
                         <div className="text-gray-400 text-xs mt-0.5">{l}</div>
                       </div>
                     ))}
