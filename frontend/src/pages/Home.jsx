@@ -301,8 +301,8 @@ export default function Home() {
             <AnimatedSection variant="fadeLeft">
               <div className="relative">
                 <div className="absolute -inset-4 bg-brand-green/10 rounded-3xl -z-10" />
-                {/* Card — no padding, photo fills top */}
-                <div className="bg-black rounded-2xl overflow-hidden">
+                {/* Card */}
+                <div className="rounded-2xl overflow-hidden shadow-2xl shadow-brand-green/10">
 
                   {/* Full portrait photo */}
                   <div className="relative w-full" style={{ height: '420px' }}>
@@ -312,30 +312,30 @@ export default function Home() {
                       className="w-full h-full object-cover"
                       style={{ objectPosition: '50% 10%' }}
                     />
-                    {/* Gradient overlay at bottom for name readability */}
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                    {/* Light green tint overlay for warmth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent" />
                     {/* Name on photo */}
-                    <div className="absolute bottom-0 left-0 right-0 px-6 pb-5">
-                      <h3 className="text-white font-heading font-bold text-2xl mb-0.5">
+                    <div className="absolute bottom-0 left-0 right-0 px-6 pb-6">
+                      <h3 className="text-white font-heading font-bold text-2xl mb-0.5 drop-shadow-lg">
                         Zarat Ranti L.
                       </h3>
-                      <p className="text-brand-green text-sm font-medium">
+                      <p className="text-brand-green text-sm font-semibold drop-shadow">
                         Chartered Accountant & Tax Consultant
                       </p>
                     </div>
                   </div>
 
-                  {/* Stats below photo */}
-                  <div className="grid grid-cols-2 gap-px bg-white/5 border-t border-white/10">
+                  {/* Stats below photo — lighter background */}
+                  <div className="grid grid-cols-2 gap-px bg-gray-200">
                     {[
                       { v: '10+', l: 'Years Experience' },
                       { v: '100+', l: 'Happy Clients' },
                       { v: 'ICAN', l: 'Certified' },
                       { v: 'CITN', l: 'Member' },
                     ].map(({ v, l }) => (
-                      <div key={l} className="bg-black/80 p-4 text-center hover:bg-brand-green/10 transition-colors">
+                      <div key={l} className="bg-white p-4 text-center hover:bg-brand-green/5 transition-colors">
                         <div className="text-brand-green font-bold text-2xl">{v}</div>
-                        <div className="text-gray-400 text-xs mt-0.5">{l}</div>
+                        <div className="text-gray-500 text-xs mt-0.5 font-medium">{l}</div>
                       </div>
                     ))}
                   </div>
