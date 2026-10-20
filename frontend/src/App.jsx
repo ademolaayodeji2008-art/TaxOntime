@@ -13,6 +13,7 @@ import Products from './pages/Products';
 import Contact from './pages/Contact';
 import Unsubscribe from './pages/Unsubscribe';
 import NotFound from './pages/NotFound';
+import TaxCalculator from './pages/TaxCalculator';
 
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="products" element={<Products />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="tax-calculator" element={<TaxCalculator />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
           </Route>
 

@@ -93,6 +93,7 @@ export default function Footer() {
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About Us' },
                 { to: '/blog', label: 'Blog & Resources' },
+                { to: '/tax-calculator', label: 'Free Tax Calculators' },
                 { to: '/products', label: 'Products' },
                 { to: '/contact', label: 'Contact Us' },
               ].map(({ to, label }) => (

@@ -113,6 +113,7 @@ export default function Navbar() {
 
             {[
               { to: '/blog', label: 'Blog' },
+              { to: '/tax-calculator', label: 'Tax Calculator' },
               { to: '/products', label: 'Products' },
               { to: '/contact', label: 'Contact' },
             ].map(({ to, label }) => (
@@ -161,6 +162,7 @@ export default function Navbar() {
                 { to: '/about', label: 'About' },
                 { to: '/services', label: 'Services' },
                 { to: '/blog', label: 'Blog' },
+                { to: '/tax-calculator', label: 'Tax Calculator' },
                 { to: '/products', label: 'Products' },
                 { to: '/contact', label: 'Contact' },
               ].map(({ to, label }) => (
