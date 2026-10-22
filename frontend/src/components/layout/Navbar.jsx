@@ -154,15 +154,16 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden bg-black/98 border-t border-white/10 overflow-hidden"
+            className="lg:hidden border-t border-white/10"
+            style={{ backgroundColor: 'rgba(0,0,0,0.98)', backdropFilter: 'blur(12px)' }}
           >
-            <div className="container-site py-4 flex flex-col gap-1">
+            <div className="container-site py-5 flex flex-col gap-2">
               {[
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About' },
                 { to: '/services', label: 'Services' },
                 { to: '/blog', label: 'Blog' },
-                { to: '/tax-calculator', label: 'Tax Calculator' },
+                { to: '/tax-calculator', label: 'Free Tax Calculator' },
                 { to: '/products', label: 'Products' },
                 { to: '/contact', label: 'Contact' },
               ].map(({ to, label }) => (
@@ -171,17 +172,21 @@ export default function Navbar() {
                   to={to}
                   end={to === '/'}
                   className={({ isActive }) =>
-                    `px-4 py-3 rounded-lg font-medium transition-colors ${
-                      isActive ? 'text-brand-green bg-brand-green/10' : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    `block w-full px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                      isActive
+                        ? 'text-brand-green bg-brand-green/10'
+                        : 'text-white hover:text-brand-green hover:bg-white/10'
                     }`
                   }
                 >
                   {label}
                 </NavLink>
               ))}
-              <Link to="/contact" className="btn-primary mt-3 justify-center">
-                Book a Call
-              </Link>
+              <div className="pt-2 border-t border-white/10 mt-1">
+                <Link to="/contact" className="btn-primary w-full justify-center py-3">
+                  Book a Call
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
