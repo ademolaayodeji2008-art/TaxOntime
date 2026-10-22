@@ -55,8 +55,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav — only show on large screens (lg+) */}
+          <nav className="hidden lg:flex items-center gap-0.5">
             {[
               { to: '/', label: 'Home' },
               { to: '/about', label: 'About' },
@@ -66,7 +66,7 @@ export default function Navbar() {
                 to={to}
                 end
                 className={({ isActive }) =>
-                  `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive ? 'text-brand-green' : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`
                 }
@@ -79,7 +79,7 @@ export default function Navbar() {
             <div className="relative" onMouseLeave={() => setServicesOpen(false)}>
               <button
                 onMouseEnter={() => setServicesOpen(true)}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/services')
                     ? 'text-brand-green'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -113,7 +113,7 @@ export default function Navbar() {
 
             {[
               { to: '/blog', label: 'Blog' },
-              { to: '/tax-calculator', label: 'Tax Calculator' },
+              { to: '/tax-calculator', label: 'Calculator' },
               { to: '/products', label: 'Products' },
               { to: '/contact', label: 'Contact' },
             ].map(({ to, label }) => (
@@ -121,7 +121,7 @@ export default function Navbar() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive ? 'text-brand-green' : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`
                 }
@@ -130,15 +130,15 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            <Link to="/contact" className="ml-3 btn-primary text-sm py-2 px-5 animate-pulse-green">
+            <Link to="/contact" className="ml-2 btn-primary text-sm py-2 px-4 animate-pulse-green">
               Book a Call
             </Link>
           </nav>
 
-          {/* Mobile Toggle */}
+          {/* Mobile/Tablet Toggle — show on everything below lg */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -154,7 +154,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-black/98 border-t border-white/10 overflow-hidden"
+            className="lg:hidden bg-black/98 border-t border-white/10 overflow-hidden"
           >
             <div className="container-site py-4 flex flex-col gap-1">
               {[
