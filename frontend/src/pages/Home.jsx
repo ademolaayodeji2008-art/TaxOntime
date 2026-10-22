@@ -305,12 +305,12 @@ export default function Home() {
                 <div className="rounded-2xl overflow-hidden shadow-2xl shadow-brand-green/10">
 
                   {/* Full portrait photo */}
-                  <div className="relative w-full" style={{ height: '420px' }}>
+                  <div className="relative w-full" style={{ height: '460px' }}>
                     <img
                       src="/owner2.jpeg"
                       alt="Zarat Ranti L. — Lead Tax Consultant & Founder"
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: '50% 10%' }}
+                      className="w-full h-full object-cover object-center"
+                      style={{ objectPosition: '50% 25%' }}
                     />
                     {/* Light green tint overlay for warmth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent" />
