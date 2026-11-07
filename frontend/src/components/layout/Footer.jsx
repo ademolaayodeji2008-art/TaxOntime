@@ -9,7 +9,7 @@ export default function Footer() {
       {/* Newsletter Banner */}
       <div className="bg-brand-green/10 border-y border-brand-green/20 py-12">
         <div className="container-site">
-          <div className="flex flex-col md:flex-row items-center gap-6 justify-between">
+          <div className="flex flex-col gap-6">
             <div>
               <h3 className="text-white font-heading font-bold text-2xl">
                 Tax & Business Insights — Free.
@@ -18,7 +18,7 @@ export default function Footer() {
                 Get practical tax and business insights, important updates, compliance reminders and useful resources — straight to your inbox.
               </p>
             </div>
-            <div className="w-full md:w-auto md:min-w-[400px]">
+            <div className="w-full">
               <NewsletterForm variant="footer" />
             </div>
           </div>

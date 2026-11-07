@@ -42,12 +42,12 @@ const expertise = [
   {
     title: 'Tax Management',
     description:
-      'Seamless, compliant tax processes with ongoing support and monitoring. We handle the complexity so you can focus on running your business, with continuous support to ensure compliance with the latest tax laws.',
+      'Support with ongoing tax processes, record-keeping and timely filing. We help clients maintain appropriate records and take the right steps towards meeting their tax obligations.',
   },
   {
     title: 'Business Regulations & Compliance',
     description:
-      'We help individuals and small businesses stay compliant with business and tax regulations while avoiding penalties. Our support ensures smooth operations, credibility, and sustainable growth.',
+      'We help individuals and small businesses understand their business and tax obligations. Our support helps them take the right steps towards compliance and manage their affairs better.',
   },
 ];
 
@@ -56,19 +56,19 @@ const approach = [
     icon: Users,
     title: 'Educate',
     description:
-      'We prioritize creating awareness and understanding of tax responsibilities among our clients. We believe that informed business owners and individuals are more likely to meet their tax obligations willingly and ethically, without resorting to practices that could harm their integrity or business reputation.',
+      'We break down tax and business concepts into practical, understandable information that helps people know their rights and responsibilities.',
   },
   {
     icon: Target,
     title: 'Advise',
     description:
-      'We provide clear, actionable advice to help our clients meet their tax and business compliance responsibilities. Every piece of advice is grounded in the principles of equity and fairness — the foundation of everything we do at TaxonTime.Ng.',
+      'We provide professional guidance tailored to individual and business circumstances, helping clients make informed and legally sound decisions.',
   },
   {
     icon: TrendingUp,
-    title: 'Ensure Compliance',
+    title: 'Support Compliance',
     description:
-      'We ensure full compliance with all Tax and Business laws and regulations to safeguard your financial future. Our ongoing support keeps you on the right side of the law, no matter how regulations evolve.',
+      'We help individuals and businesses understand their applicable obligations, maintain appropriate records and take timely steps towards compliance.',
   },
 ];
 
@@ -150,8 +150,8 @@ export default function About() {
               </h2>
 
               <p className="text-gray-600 leading-relaxed mb-4">
-                TaxonTime.Ng is an education-led tax and business platform created to simplify
-                information that individuals and businesses often find confusing. We combine
+                TaxonTime.Ng is an education-led tax and business platform offering practical
+                resources and access to professional advisory services. We combine
                 <strong> practical education with professional guidance</strong> to help people
                 understand their responsibilities, make informed decisions and stay compliant.
               </p>
@@ -228,10 +228,10 @@ export default function About() {
               We Are <span className="gradient-text">Taxpreneurs</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed drop-shadow">
-              We believe in the principles of <strong className="text-white">equity and fairness</strong>.
-              The "Taxpreneurs" concept reflects our mission — entrepreneurs in tax committed to
-              education, ethical practice and voluntary compliance. Our goal is to make tax and
-              business information accessible, understandable and actionable for every Nigerian.
+              At TaxonTime.Ng, we believe that tax compliance begins with understanding, not fear.
+              Our approach is built on equity, fairness, ethical practice and voluntary compliance.
+              We simplify complex tax and business information so individuals and entrepreneurs can
+              make informed decisions and meet their obligations confidently.
             </p>
           </AnimatedSection>
 

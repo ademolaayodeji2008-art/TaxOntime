@@ -12,8 +12,8 @@ import ImageSection from '../components/ui/ImageSection';
 const stats = [
   { value: '100+', label: 'Clients Served', icon: Users },
   { value: '10+', label: 'Years Experience', icon: Award },
-  { value: '100%', label: 'Compliance Rate', icon: CheckCircle2 },
-  { value: '₦0', label: 'Hidden Fees', icon: TrendingUp },
+  { value: 'Compliance-Focused', label: 'Advisory', icon: CheckCircle2 },
+  { value: 'Transparent', label: 'Pricing', icon: TrendingUp },
 ];
 
 const services = [
@@ -56,12 +56,12 @@ const services = [
 ];
 
 const whyUs = [
-  'Chartered Accountant & Certified Tax Specialist',
-  'Transparent, flat-fee pricing — no surprises',
-  'Full compliance with Nigerian tax laws',
-  'Personalized service tailored to your needs',
-  'Proven track record with 100+ clients',
-  'Ongoing support and tax education',
+  'ICAN Chartered Accountant & CITN Tax Consultant',
+  'Transparent pricing — explained before engagement',
+  'Education-led approach to tax and business',
+  'Personalised guidance for your specific situation',
+  'Practical support for individuals and businesses',
+  'Ongoing access to resources and insights',
 ];
 
 export default function Home() {
@@ -146,7 +146,7 @@ export default function Home() {
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="w-2 h-2 bg-brand-green rounded-full"
               />
-              Nigeria's Trusted Tax & Business Education Platform
+              Your Partner in Tax & Business Education
             </motion.div>
 
             {/* Headline — words animate in one by one */}
@@ -216,7 +216,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 1 }}
               className="flex flex-wrap items-center gap-5 mt-12"
             >
-              {['Chartered Accountant', 'Certified Tax Specialist', 'ICAN Member', 'CITN Member'].map((badge, i) => (
+              {['ICAN Certified', 'CITN Member', 'Practical Tax Education', 'Professional Advisory Support'].map((badge, i) => (
                 <motion.span
                   key={badge}
                   initial={{ opacity: 0, y: 10 }}
@@ -310,7 +310,7 @@ export default function Home() {
                       src="/owner2.jpeg"
                       alt="Zarat Ranti L. — Lead Tax Consultant & Founder"
                       className="w-full h-full object-cover object-center"
-                      style={{ objectPosition: '50% 25%' }}
+                      style={{ objectPosition: '50% 30%' }}
                     />
                     {/* Light green tint overlay for warmth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent" />
@@ -409,23 +409,6 @@ export default function Home() {
         </div>
       </ImageSection>
 
-      {/* ── Newsletter ──────────────────────────────────────────── */}
-      <section className="section bg-white">
-        <div className="container-site">
-          <div className="max-w-xl mx-auto text-center">
-            <AnimatedSection>
-              <p className="text-brand-green font-medium uppercase tracking-widest text-sm mb-2">TaxonTime Brief</p>
-              <h2 className="font-heading font-bold text-3xl text-gray-900 mb-3">
-                Tax & Business Insights Straight to Your Inbox
-              </h2>
-              <p className="text-gray-500 mb-8">
-                Get practical tax and business insights, important updates, compliance reminders and useful resources — straight to your inbox.
-              </p>
-              <NewsletterForm />
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

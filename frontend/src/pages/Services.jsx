@@ -7,8 +7,7 @@ import {
   MessageCircleQuestion, RefreshCw, FilePen, FileSearch,
   ClipboardList, Scale, Handshake, GraduationCap,
   BookMarked, ExternalLink, BadgeDollarSign, SearchCheck,
-} from 'lucide-react';
-import AnimatedSection from '../components/ui/AnimatedSection';
+} from 'lucide-react';import AnimatedSection from '../components/ui/AnimatedSection';
 import PageHero from '../components/ui/PageHero';
 import ImageSection from '../components/ui/ImageSection';
 
@@ -62,34 +61,34 @@ const serviceGroups = [
   {
     id: 'tax-filing',
     icon: FileText,
-    title: 'Tax Filing',
+    title: 'Tax Filing & Compliance',
     color: 'from-blue-500 to-blue-700',
     description:
-      'Accurate, timely tax filing for individuals and businesses. We handle everything so you never miss a deadline or overpay.',
+      'Stay organised and meet your tax filing obligations with professional support. We assist individuals and businesses with the preparation, review and submission of applicable tax returns, including Personal Income Tax, Company Income Tax, VAT and PAYE. Our services are structured to accommodate different filing needs, from straightforward annual returns to more complex tax situations.',
     items: [
       {
         icon: UserCircle,
-        title: 'Annual Filing — Individual (PITA)',
+        title: 'Annual Filing — Individual (Personal Income Tax)',
         description:
-          'Personal Income Tax Assessment filing in three tiers: Lite (basic filers), Max (multiple income streams), and Pro (complex portfolios).',
+          'We support individuals with the preparation and submission of their annual Personal Income Tax returns. Available in three tiers — Lite (straightforward returns), Max (multiple income sources) and Pro (complex situations) — to suit different filing needs.',
       },
       {
         icon: Briefcase,
-        title: 'Annual Filing — Small Business (CITA)',
+        title: 'Annual Filing — Business (Company Income Tax)',
         description:
-          'Companies Income Tax Act filing for small businesses — Lite, Max, and Pro packages tailored to your business size and complexity.',
+          'We assist businesses with the preparation and submission of Company Income Tax returns. Available in Lite, Max and Pro tiers to accommodate businesses at different stages. Explore our filing packages or request a consultation to identify the appropriate service.',
       },
       {
         icon: BadgeDollarSign,
         title: 'Monthly VAT Filing',
         description:
-          'Value Added Tax monthly filing for Pro & Max businesses. We ensure accurate returns and full compliance with FIRS/NRS requirements.',
+          'Value Added Tax monthly filing support for businesses on our Max and Pro service tiers. We assist with accurate VAT computations and timely submission to the relevant tax authority.',
       },
       {
         icon: ClipboardList,
         title: 'Monthly PAYE Filing',
         description:
-          'Pay As You Earn monthly payroll tax filing for Pro & Max small businesses. Stay compliant with employee tax obligations.',
+          'Pay As You Earn monthly payroll tax filing support for businesses on our Max and Pro service tiers. We assist employers in meeting their employee tax deduction and remittance obligations.',
       },
     ],
   },
@@ -155,25 +154,25 @@ const serviceGroups = [
     title: 'Tax Audit & Investigation',
     color: 'from-red-500 to-red-700',
     description:
-      'Facing a tax audit or investigation? Our experts will represent and protect you throughout the process.',
+      'Receiving a tax audit notice or facing an investigation can be challenging without the right preparation. We provide professional support throughout the process, including reviewing relevant records, preparing documentation, responding to tax authority enquiries and representing clients during audit engagements. Our approach focuses on accurate reporting, protecting taxpayers\' legitimate rights and resolving matters in accordance with applicable tax laws.',
     items: [
       {
         icon: SearchCheck,
-        title: 'Tax Audits Case',
+        title: 'Tax Audit Representation',
         description:
-          'Expert handling of tax audit cases — we prepare documentation, represent you before the authorities, and work to minimize liabilities.',
+          'Professional support during tax desk and field audits — we review records, prepare responses, represent you before the tax authority and help resolve matters in accordance with applicable law.',
       },
       {
         icon: Scale,
-        title: 'Tax Investigation Case',
+        title: 'Tax Investigation Support',
         description:
-          'Professional assistance during tax investigations, ensuring your rights are protected and the process is handled properly.',
+          'Professional assistance during tax investigations, ensuring your rights are protected, relevant records are properly presented and the process is handled appropriately.',
       },
       {
         icon: Handshake,
         title: 'Partner with Us',
         description:
-          'Tax practitioners and firms can partner with us for collaborative support on complex audit and investigation cases.',
+          'Tax practitioners and firms can partner with us for collaborative support on audit and investigation engagements on behalf of shared clients.',
       },
     ],
   },
@@ -183,13 +182,13 @@ const serviceGroups = [
     title: 'Tax Defence & Resolution',
     color: 'from-teal-500 to-teal-700',
     description:
-      'Dispute with the tax authorities? We provide strategic defence and resolution services to protect your interests.',
+      'Disagree with a tax assessment or need assistance resolving an outstanding tax matter? We help individuals and businesses review disputed assessments, prepare supporting representations, respond to tax authority queries and pursue appropriate resolution procedures. Each engagement begins with an assessment of the facts, available records and applicable provisions.',
     items: [
       {
         icon: Shield,
         title: 'Tax Defence and Resolution',
         description:
-          'Comprehensive defence strategies to contest incorrect tax assessments and resolve disputes with FIRS/NRS or state tax authorities.',
+          'We help clients review disputed tax assessments, prepare representations and pursue resolution through appropriate channels in accordance with applicable tax laws.',
       },
       {
         icon: Handshake,
@@ -391,6 +390,58 @@ export default function Services() {
       </section>
 
       {/* Final CTA */}
+      {/* ── Final CTA — ant-bg2.jpg (TAX dial) ──────────────────── */}
+      {/* ── How It Works — 3 step process ───────────────────────── */}
+      <section className="section bg-white">
+        <div className="container-site">
+          <AnimatedSection className="text-center mb-12">
+            <p className="text-brand-green font-medium uppercase tracking-widest text-sm mb-2">How It Works</p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-3">
+              What Happens After You Book
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              We want you to feel confident before committing. Here is exactly what to expect when you reach out.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                step: '1',
+                icon: ClipboardList,
+                title: 'Tell Us What You Need',
+                desc: 'Select a service and provide a brief description of your situation. We will review your enquiry and confirm the appropriate service.',
+              },
+              {
+                step: '2',
+                icon: MessageCircleQuestion,
+                title: 'Receive Guidance on the Next Step',
+                desc: 'We review your enquiry and explain the proposed scope, requirements and applicable fees before any engagement begins.',
+              },
+              {
+                step: '3',
+                icon: CheckCircle2,
+                title: 'Begin Your Engagement',
+                desc: 'Once the scope and terms are agreed, we begin the service. You will know exactly what to expect throughout.',
+              },
+            ].map(({ step, icon: Icon, title, desc }) => (
+              <AnimatedSection key={step} variant="fadeUp" delay={Number(step) * 0.15}>
+                <div className="text-center p-6 rounded-2xl border border-gray-100 hover:border-brand-green/30 hover:shadow-md transition-all duration-300">
+                  <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                    {step}
+                  </div>
+                  <div className="w-10 h-10 bg-brand-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <Icon size={18} className="text-brand-green" />
+                  </div>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-2">{title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Final CTA — ant-bg2.jpg (TAX dial) ──────────────────── */}
       <ImageSection
         image="/ant-bg2.jpg"

@@ -26,7 +26,7 @@ export default function NewsletterForm({ variant = 'default' }) {
 
   if (variant === 'footer') {
     return (
-      <form onSubmit={handleSubmit} className="flex gap-2 w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full">
         <input
           type="email"
           value={email}
@@ -38,7 +38,7 @@ export default function NewsletterForm({ variant = 'default' }) {
         <button
           type="submit"
           disabled={loading}
-          className="btn-primary whitespace-nowrap"
+          className="btn-primary whitespace-nowrap w-full sm:w-auto justify-center"
         >
           {loading ? (
             <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
