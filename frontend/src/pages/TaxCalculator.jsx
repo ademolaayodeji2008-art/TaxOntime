@@ -8,19 +8,23 @@ import AnimatedSection from '../components/ui/AnimatedSection';
 import PageHero from '../components/ui/PageHero';
 import { Link } from 'react-router-dom';
 
-// ─── Nigerian PIT Tax Table (2024 PITA) ───────────────────────────────────────
-// Based on FIRS/NRS graduated tax bands
-const PIT_BANDS = [
-  { limit: 300000,   rate: 0.07 },
-  { limit: 300000,   rate: 0.11 },
-  { limit: 500000,   rate: 0.15 },
-  { limit: 500000,   rate: 0.19 },
-  { limit: 1600000,  rate: 0.21 },
-  { limit: Infinity, rate: 0.24 },
+// ─── Nigeria Tax Act 2025 — Effective 1 January 2026 ─────────────────────────
+// Source: KPMG Flash Alert 2025-168, PwC Tax Summaries, countrytaxcalc.com
+// CRA abolished. First ₦800,000 taxed at 0%. New progressive bands.
+// Minimum wage exemption: ₦840,000/year (₦70,000/month) — fully exempt.
+
+const NTA_BANDS = [
+  { limit: 800000,    rate: 0.00 }, // 0%   — first ₦800,000
+  { limit: 2200000,   rate: 0.15 }, // 15%  — next ₦2.2M  (up to ₦3M)
+  { limit: 9000000,   rate: 0.18 }, // 18%  — next ₦9M    (up to ₦12M)
+  { limit: 13000000,  rate: 0.21 }, // 21%  — next ₦13M   (up to ₦25M)
+  { limit: 25000000,  rate: 0.23 }, // 23%  — next ₦25M   (up to ₦50M)
+  { limit: Infinity,  rate: 0.25 }, // 25%  — above ₦50M
 ];
 
-const CONSOLIDATED_RELIEF = 200000; // ₦200,000 CRA
-const CRA_PERCENTAGE = 0.20; // 20% of gross income
+const MINIMUM_WAGE_ANNUAL = 840000; // ₦70,000/month — exempt from tax
+const PENSION_RATE = 0.08;          // 8% employee pension contribution
+const NHF_RATE    = 0.025;          // 2.5% of basic salary
 
 const formatNaira = (amount) =>
   new Intl.NumberFormat('en-NG', {
@@ -29,56 +33,69 @@ const formatNaira = (amount) =>
     minimumFractionDigits: 2,
   }).format(amount);
 
-// ─── PIT Calculator Logic ─────────────────────────────────────────────────────
-function calculatePIT(annualGross) {
+// ─── PIT Calculator Logic (NTA 2025) ─────────────────────────────────────────
+function calculatePIT(annualGross, annualPensionDeduction = 0, rentRelief = 0) {
   const grossIncome = Number(annualGross);
   if (!grossIncome || grossIncome <= 0) return null;
 
-  // Consolidated Relief Allowance
-  const cra = Math.max(CONSOLIDATED_RELIEF, CRA_PERCENTAGE * grossIncome);
+  // Minimum wage exemption
+  if (grossIncome <= MINIMUM_WAGE_ANNUAL) {
+    return {
+      grossIncome,
+      pensionDeduction: annualPensionDeduction,
+      rentRelief: 0,
+      chargeableIncome: 0,
+      annualTax: 0,
+      monthlyTax: 0,
+      netAnnual: grossIncome - annualPensionDeduction,
+      netMonthly: (grossIncome - annualPensionDeduction) / 12,
+      effectiveRate: 0,
+      breakdown: [],
+      exempt: true,
+    };
+  }
 
-  // Taxable Income
-  const taxableIncome = Math.max(0, grossIncome - cra);
+  // Rent relief capped at ₦500,000 (20% of declared annual rent, claim-based)
+  const cappedRentRelief = Math.min(Number(rentRelief) || 0, 500000);
 
-  // Apply tax bands
+  // Chargeable income = Gross − Pension − Rent Relief
+  const chargeableIncome = Math.max(0, grossIncome - annualPensionDeduction - cappedRentRelief);
+
+  // Apply NTA 2025 tax bands
   let tax = 0;
-  let remaining = taxableIncome;
+  let remaining = chargeableIncome;
   const breakdown = [];
 
-  for (const band of PIT_BANDS) {
+  for (const band of NTA_BANDS) {
     if (remaining <= 0) break;
     const taxable = Math.min(remaining, band.limit);
     const bandTax = taxable * band.rate;
     if (taxable > 0) {
-      breakdown.push({
-        amount: taxable,
-        rate: band.rate * 100,
-        tax: bandTax,
-      });
+      breakdown.push({ amount: taxable, rate: band.rate * 100, tax: bandTax });
     }
     tax += bandTax;
     remaining -= taxable;
   }
 
   const effectiveRate = grossIncome > 0 ? (tax / grossIncome) * 100 : 0;
-  const monthlyTax = tax / 12;
-  const netAnnual = grossIncome - tax;
-  const netMonthly = netAnnual / 12;
+  const netAnnual = grossIncome - annualPensionDeduction - tax;
 
   return {
     grossIncome,
-    cra,
-    taxableIncome,
+    pensionDeduction: annualPensionDeduction,
+    rentRelief: cappedRentRelief,
+    chargeableIncome,
     annualTax: tax,
-    monthlyTax,
+    monthlyTax: tax / 12,
     netAnnual,
-    netMonthly,
+    netMonthly: netAnnual / 12,
     effectiveRate,
     breakdown,
+    exempt: false,
   };
 }
 
-// ─── PAYE Calculator Logic ────────────────────────────────────────────────────
+// ─── PAYE Calculator Logic (NTA 2025) ────────────────────────────────────────
 function calculatePAYE(monthlyBasic, housing, transport, otherAllowances) {
   const basic = Number(monthlyBasic) || 0;
   const houseAllowance = Number(housing) || 0;
@@ -88,15 +105,15 @@ function calculatePAYE(monthlyBasic, housing, transport, otherAllowances) {
   const monthlyGross = basic + houseAllowance + transportAllowance + others;
   const annualGross = monthlyGross * 12;
 
-  const result = calculatePIT(annualGross);
-  if (!result) return null;
-
-  // Pension: 8% of basic + housing + transport (employee contribution)
-  const monthlyPension = (basic + houseAllowance + transportAllowance) * 0.08;
+  // Pension: 8% of total monthly emoluments (NTA 2025 — all emoluments, not just basic+housing+transport)
+  const monthlyPension = monthlyGross * PENSION_RATE;
   const annualPension = monthlyPension * 12;
 
   // NHF: 2.5% of basic salary
-  const monthlyNHF = basic * 0.025;
+  const monthlyNHF = basic * NHF_RATE;
+
+  const result = calculatePIT(annualGross, annualPension);
+  if (!result) return null;
 
   const totalMonthlyDeductions = result.monthlyTax + monthlyPension + monthlyNHF;
   const monthlyNet = monthlyGross - totalMonthlyDeductions;
@@ -112,8 +129,9 @@ function calculatePAYE(monthlyBasic, housing, transport, otherAllowances) {
     monthlyNet,
     effectiveRate: result.effectiveRate,
     breakdown: result.breakdown,
-    cra: result.cra,
-    taxableIncome: result.taxableIncome,
+    chargeableIncome: result.chargeableIncome,
+    pensionDeduction: result.pensionDeduction,
+    exempt: result.exempt,
   };
 }
 
@@ -160,9 +178,8 @@ const Disclaimer = () => (
   <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6">
     <Info size={16} className="text-amber-500 flex-shrink-0 mt-0.5" />
     <p className="text-xs text-amber-700 leading-relaxed">
-      <strong>Disclaimer:</strong> These calculators are for estimation purposes only and are based on current Nigerian tax laws. 
-      Results may vary based on individual circumstances, additional allowances, and specific tax reliefs. 
-      Please consult a qualified tax professional for accurate tax advice.{' '}
+      <strong>Disclaimer:</strong> These calculators are for estimation purposes only, based on the Nigeria Tax Act 2025 (effective 1 January 2026). Results may vary based on individual circumstances, additional reliefs, state-level rules and changes introduced by future Finance Acts.
+      Always consult a qualified tax professional for advice specific to your situation.{' '}
       <Link to="/contact" className="underline hover:text-amber-900">Book a consultation</Link> for personalised guidance.
     </p>
   </div>
@@ -172,21 +189,25 @@ const Disclaimer = () => (
 function PITCalculator() {
   const [income, setIncome] = useState('');
   const [frequency, setFrequency] = useState('annual');
+  const [rentRelief, setRentRelief] = useState('');
   const [result, setResult] = useState(null);
 
   const handleCalculate = () => {
     const annual = frequency === 'monthly' ? Number(income) * 12 : Number(income);
-    setResult(calculatePIT(annual));
+    // For standalone PIT (no PAYE), pension is not auto-deducted — user enters gross
+    const annualPension = annual * PENSION_RATE;
+    setResult(calculatePIT(annual, annualPension, Number(rentRelief) * 12 || 0));
   };
 
-  const handleReset = () => { setIncome(''); setResult(null); };
+  const handleReset = () => { setIncome(''); setRentRelief(''); setResult(null); };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Input */}
       <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
         <h3 className="font-heading font-bold text-lg text-gray-900 mb-1">Personal Income Tax (PIT)</h3>
-        <p className="text-gray-500 text-sm mb-6">Based on FIRS/NRS graduated tax bands (PITA)</p>
+        <p className="text-gray-500 text-sm mb-1">Based on the <strong>Nigeria Tax Act 2025</strong> — effective 1 January 2026</p>
+        <p className="text-xs text-brand-green font-medium mb-5">✓ CRA abolished · ✓ New progressive bands · ✓ 0% on first ₦800,000</p>
 
         <div className="space-y-4">
           <div>
@@ -222,6 +243,20 @@ function PITCalculator() {
             />
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Monthly Rent Paid (₦) <span className="text-gray-400 font-normal">— optional, for rent relief</span>
+            </label>
+            <input
+              type="number"
+              value={rentRelief}
+              onChange={(e) => setRentRelief(e.target.value)}
+              className="input"
+              placeholder="e.g. 50000 (rent relief = 20%, capped at ₦500k/year)"
+              min="0"
+            />
+          </div>
+
           <div className="flex gap-3 pt-2">
             <button onClick={handleCalculate} className="btn-primary flex-1 justify-center py-3">
               <Calculator size={16} /> Calculate
@@ -232,24 +267,30 @@ function PITCalculator() {
           </div>
         </div>
 
-        {/* Tax bands info */}
+        {/* NTA 2025 tax bands info */}
         <div className="mt-6 bg-gray-50 rounded-xl p-4">
-          <p className="text-xs font-semibold text-gray-700 mb-2">Nigerian PIT Tax Bands</p>
+          <p className="text-xs font-semibold text-gray-700 mb-2">Nigeria Tax Act 2025 — PIT Bands</p>
           <div className="space-y-1">
             {[
-              { range: 'First ₦300,000', rate: '7%' },
-              { range: 'Next ₦300,000', rate: '11%' },
-              { range: 'Next ₦500,000', rate: '15%' },
-              { range: 'Next ₦500,000', rate: '19%' },
-              { range: 'Next ₦1,600,000', rate: '21%' },
-              { range: 'Above ₦3,200,000', rate: '24%' },
-            ].map(({ range, rate }) => (
+              { range: 'First ₦800,000',           rate: '0%',  note: 'Tax-free' },
+              { range: 'Next ₦2.2M (up to ₦3M)',   rate: '15%', note: '' },
+              { range: 'Next ₦9M (up to ₦12M)',    rate: '18%', note: '' },
+              { range: 'Next ₦13M (up to ₦25M)',   rate: '21%', note: '' },
+              { range: 'Next ₦25M (up to ₦50M)',   rate: '23%', note: '' },
+              { range: 'Above ₦50M',                rate: '25%', note: 'Top rate' },
+            ].map(({ range, rate, note }) => (
               <div key={range} className="flex justify-between text-xs text-gray-500">
                 <span>{range}</span>
-                <span className="font-semibold text-brand-green">{rate}</span>
+                <span className={`font-semibold ${rate === '0%' ? 'text-green-600' : 'text-brand-green'}`}>
+                  {rate} {note && <span className="text-gray-400 font-normal">({note})</span>}
+                </span>
               </div>
             ))}
           </div>
+          <p className="text-xs text-gray-400 mt-2 pt-2 border-t border-gray-200">
+            CRA abolished from Jan 2026. Pension (8%) deducted before tax is applied.
+            Min. wage earners (≤₦840k/year) are fully exempt.
+          </p>
         </div>
       </div>
 
@@ -266,30 +307,51 @@ function PITCalculator() {
               <CheckCircle2 size={18} className="text-brand-green" /> Your Tax Estimate
             </h3>
 
-            <ResultRow label="Gross Income (Annual)" value={formatNaira(result.grossIncome)} />
-            <ResultRow label="Consolidated Relief Allowance (CRA)" value={`- ${formatNaira(result.cra)}`} />
-            <ResultRow label="Taxable Income" value={formatNaira(result.taxableIncome)} />
+            {result.exempt ? (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-5 text-center">
+                <CheckCircle2 size={36} className="text-green-500 mx-auto mb-2" />
+                <p className="font-semibold text-green-800">Tax Exempt</p>
+                <p className="text-sm text-green-700 mt-1">
+                  Income at or below the national minimum wage (₦840,000/year) is fully exempt from Personal Income Tax under the Nigeria Tax Act 2025.
+                </p>
+              </div>
+            ) : (
+              <>
+                <ResultRow label="Annual Gross Income" value={formatNaira(result.grossIncome)} />
+                <ResultRow label="Pension Deduction (8%)" value={`- ${formatNaira(result.pensionDeduction)}`} />
+                {result.rentRelief > 0 && (
+                  <ResultRow label="Rent Relief (20%, max ₦500k)" value={`- ${formatNaira(result.rentRelief)}`} />
+                )}
+                <ResultRow label="Chargeable Income" value={formatNaira(result.chargeableIncome)} />
 
-            <div className="mt-3 mb-3">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Tax Breakdown</p>
-              {result.breakdown.map((b, i) => (
-                <ResultRow
-                  key={i}
-                  label={`₦${(b.amount).toLocaleString()} @ ${b.rate}%`}
-                  value={formatNaira(b.tax)}
-                  indent
-                />
-              ))}
-            </div>
+                <div className="mt-3 mb-3">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Tax Band Breakdown</p>
+                  {result.breakdown.filter(b => b.rate > 0).map((b, i) => (
+                    <ResultRow
+                      key={i}
+                      label={`₦${b.amount.toLocaleString()} @ ${b.rate}%`}
+                      value={formatNaira(b.tax)}
+                      indent
+                    />
+                  ))}
+                  {result.breakdown.find(b => b.rate === 0) && (
+                    <ResultRow
+                      label={`₦${result.breakdown.find(b => b.rate === 0).amount.toLocaleString()} @ 0% (tax-free band)`}
+                      value="₦0.00"
+                      indent
+                    />
+                  )}
+                </div>
 
-            <div className="bg-brand-green/5 rounded-xl p-4 mt-2 space-y-2">
-              <ResultRow label="Annual Tax Payable" value={formatNaira(result.annualTax)} highlight />
-              <ResultRow label="Monthly Tax Payable" value={formatNaira(result.monthlyTax)} highlight />
-              <ResultRow label="Effective Tax Rate" value={`${result.effectiveRate.toFixed(2)}%`} highlight />
-              <ResultRow label="Annual Net Income" value={formatNaira(result.netAnnual)} />
-              <ResultRow label="Monthly Net Income" value={formatNaira(result.netMonthly)} />
-            </div>
-
+                <div className="bg-brand-green/5 rounded-xl p-4 mt-2 space-y-2">
+                  <ResultRow label="Annual Tax Payable" value={formatNaira(result.annualTax)} highlight />
+                  <ResultRow label="Monthly Tax Payable" value={formatNaira(result.monthlyTax)} highlight />
+                  <ResultRow label="Effective Tax Rate" value={`${result.effectiveRate.toFixed(2)}%`} highlight />
+                  <ResultRow label="Annual Net (after tax & pension)" value={formatNaira(result.netAnnual)} />
+                  <ResultRow label="Monthly Net Take-Home" value={formatNaira(result.netMonthly)} />
+                </div>
+              </>
+            )}
             <Disclaimer />
           </motion.div>
         ) : (
@@ -356,10 +418,11 @@ function PAYECalculator() {
         </div>
 
         <div className="mt-5 bg-blue-50 rounded-xl p-4 text-xs text-blue-700 space-y-1">
-          <p className="font-semibold mb-1">Deductions included:</p>
-          <p>• PAYE tax (based on annual PIT bands)</p>
-          <p>• Pension: 8% of (Basic + Housing + Transport)</p>
+          <p className="font-semibold mb-1">Deductions included (NTA 2025):</p>
+          <p>• PAYE tax (Nigeria Tax Act 2025 bands)</p>
+          <p>• Pension: 8% of total gross emoluments</p>
           <p>• NHF: 2.5% of Basic Salary</p>
+          <p>• Minimum wage earners (≤₦70k/month) are fully exempt</p>
         </div>
       </div>
 
@@ -380,16 +443,17 @@ function PAYECalculator() {
 
             <div className="mt-3 mb-3">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Monthly Deductions</p>
+              <ResultRow label="Pension (8% of gross emoluments)" value={formatNaira(result.monthlyPension)} indent />
+              <ResultRow label="NHF (2.5% of basic)" value={formatNaira(result.monthlyNHF)} indent />
               <ResultRow label="PAYE Tax" value={formatNaira(result.monthlyPAYE)} indent />
-              <ResultRow label="Pension (8%)" value={formatNaira(result.monthlyPension)} indent />
-              <ResultRow label="NHF (2.5%)" value={formatNaira(result.monthlyNHF)} indent />
             </div>
 
             <div className="bg-brand-green/5 rounded-xl p-4 mt-2 space-y-2">
               <ResultRow label="Total Monthly Deductions" value={formatNaira(result.totalMonthlyDeductions)} highlight />
               <ResultRow label="Monthly Net Pay" value={formatNaira(result.monthlyNet)} highlight />
               <ResultRow label="Annual PAYE Tax" value={formatNaira(result.annualPAYE)} />
-              <ResultRow label="Effective Tax Rate" value={`${result.effectiveRate.toFixed(2)}%`} />
+              <ResultRow label="Chargeable Income (Annual)" value={formatNaira(result.chargeableIncome)} />
+              <ResultRow label="Effective Tax Rate on Gross" value={`${result.effectiveRate.toFixed(2)}%`} />
             </div>
 
             <Disclaimer />
@@ -546,7 +610,7 @@ export default function TaxCalculator() {
         breadcrumb="Free Tax Tools"
         title="Free Nigerian"
         highlight="Tax Calculators"
-        subtitle="Estimate your Personal Income Tax, PAYE deductions, and VAT in seconds — free, no signup required."
+        subtitle="Estimate your Personal Income Tax, PAYE deductions, and VAT — updated for the Nigeria Tax Act 2025 (effective January 2026). Free, no signup required."
       />
 
       <section className="section bg-white">
